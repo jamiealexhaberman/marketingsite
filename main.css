@@ -1,0 +1,169 @@
+body {
+	margin: 0;
+	background-color: #DFDFDA;
+	/* background-color: red; */
+
+	color: #fff;
+}
+
+/* div.3d-logo{
+
+	width: 100%;
+	height: 100%;
+} */
+
+
+ canvas {
+	display: block;
+	background-color: #EAEAEA;;
+	/* max-width: 500px;
+	min-width: 200px;
+	width: 100%;
+	height: auto; */
+	 margin: auto;
+vertical-align: middle;
+
+}
+
+#slogan{
+	position:absolute; left: 80px; top:80px;
+
+}
+
+li{
+	color:#000000;
+	opacity: 0;
+position:absolute;
+	width: 550px;
+	height: 320px;
+	left:32%;
+	top:28%;
+	/* cursor: url('cursor.png'), auto; */
+
+}
+li.pointer {
+/* cursor: url('cursor.png'), auto; */
+opacity:0.5;
+
+}
+
+#about {
+	opacity:0;
+	width:500px;
+	height:300px;
+	position:absolute;
+	bottom:35px;
+	right:120px;
+	z-index:10;
+}
+.social-link {
+	position:absolute;
+}
+#hrs {
+	top:47px;
+	right:46px;
+}
+/* #scale{
+	top:120px;
+	right:36px;
+	width:50px;
+} */
+
+#ig {
+	top:120px;
+	right:50px;
+}
+#in {
+	top:185px;
+	right:50px;
+}
+#peace {
+	top:250px;
+	right:50px;
+}
+
+#slack {
+	top:320px;
+	right:46px;
+
+}
+
+.about-animation {
+	position:absolute;
+	bottom:35px;
+	right:120px;
+	opacity:1;
+	mix-blend-mode: darken;
+}
+#animate-out {
+	mix-blend-mode: darken;
+	opacity:0;
+	z-index:-1;
+}
+#animate-in {
+	mix-blend-mode: darken;
+}
+#explain{
+
+	width:250px;
+	position: absolute;
+	bottom:10px;
+	left:10px;
+	display: none;
+}
+
+
+
+
+.dg.ac {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	z-index: 2 !important; /* TODO Solve this in HTML */
+}
+
+
+
+
+@media only screen and (max-width: 1000px) {
+	#explain{
+	display: block;
+	width:320px;
+	}
+	#icon {
+    	width:15px;
+  	}
+	#slogan {
+		left:3%;
+		top:7%;
+		width: 130px;
+	}
+	.about-animation {
+		visibility: hidden;
+		display:none
+		bottom:-1000px;
+	}
+	/* #scale {
+		top:105px;
+		right:36px;
+		width:35px;
+	} */
+#ig {
+	top:90px;
+	right:46px;
+}
+#in {
+	top:137px;
+	right:46px;
+}
+#peace {
+	top:185px;
+	right:47px;
+}
+#slack {
+	top:243px;
+	right:46px;
+}
+
+}

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158509415-4"></script>
+<script data-ad-client="ca-pub-7186754847139828" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-158509415-4');
+</script>
+		<title>Q&A Website</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	</head>
+	<body>
+
+<!-- /////slogan -->
+
+  <!-- <img id="slogan"src="powering.svg" alt="image"> -->
+
+<!-- /////about -->
+<!-- <div id="about" onclick="if(screen.width>1000){if(aboutin){vidIn() }else{vidOut()}}else{vidHide()}">
+<img src="about1.svg" alt="image">
+</div>
+
+<div id="explain" >
+<img id="explain" src="explain2.png" alt="image">
+</div> -->
+
+<!-- /////links -->
+<!-- hrs -->
+<!-- <div class="social-link" id="hrs">
+	 <a href="https://www.human-re-sources.com/">
+<img id="icon" src="hrs.svg" alt="image">
+</a>
+</div> -->
+<!-- scale -->
+<!-- <div class="social-link" id="scale">
+
+<img  src="Scale_Logo_Black_RGB.svg" alt="image">
+
+</div> -->
+
+
+<!-- ig -->
+<!-- <div class="social-link" id="ig">
+	<a href="https://www.instagram.com/qanda.la/">
+<img id="icon" src="ig.svg" alt="image">
+</a>
+</div> -->
+<!-- in -->
+<!-- <div class="social-link" id="in">
+	<a href="https://www.linkedin.com/company/qandamedia/">
+
+<img  id="icon"src="in.svg" alt="image"></a>
+</div> -->
+<!-- angelist -->
+<!-- <div  class="social-link" id="peace">
+		<a href="https://angel.co/company/qandamedia">
+<img id="icon" src="peace.svg" alt="image"></a>
+</div>
+<div  class="social-link" id="slack">
+		<a href="https://join.slack.com/t/thepanelbyqac-wvg3603/shared_invite/zt-cxx4oxqq-PNphe5VCaE67a1LEKFplqw">
+<img id="icon" src="slack.svg" alt="image"></a>
+</div>
+
+<video class = "about-animation" id="animate-in"  width="500" >
+  <source  src="about - IN2.mp4" type="video/mp4">
+
+</video>
+<video class = "about-animation" id="animate-out"  width="500" >
+  <source  src="about - OUT2.mp4" type="video/mp4">
+
+</video> -->
+
+<script>
+var vid1 = document.getElementById("animate-in");
+var vid2 = document.getElementById("animate-out");
+
+var aboutin = true;
+
+function vidIn() {
+	vid2.style.zIndex = "-1";
+	// vi2.style.opacity = "0";
+	vid1.style.zIndex = "1";
+	// vid1.style.opacity = "1";
+	vid1.currentTime = 0;
+  vid1.load();
+  vid1.play();
+	aboutin = false;
+}
+
+function vidOut() {
+
+	vid1.pause();
+	vid2.style.zIndex = "1";
+	vid2.style.opacity="1";
+  vid1.style.zIndex = "-1";
+	vid2.currentTime = 0;
+vid2.load();
+  vid2.play();
+	aboutin = true;
+
+}
+
+function vidHide(){
+	vid2.style.display = "none";
+	vid1.style.display = "none";
+
+}
+
+
+</script>
+		<script type="module" id="logo3d">
+
+			import * as THREE from '../build/three.module.js';
+			import { LineMaterial } from './jsm/lines/LineMaterial.js';
+			import { LineGeometry } from './jsm/lines/LineGeometry.js';
+
+			import Stats from './jsm/libs/stats.module.js';
+
+			import { GeometryUtils } from './jsm/utils/GeometryUtils.js';
+
+			THREE.Cache.enabled = true;
+
+			var container, stats, permalink, hex;
+
+			var camera, cameraTarget, scene, renderer;
+
+
+			var group, textMesh1, textGeo, materials;
+
+			var firstLetter = true;
+
+			var text = "Q&A",
+
+				height = 40,
+				size = 100,
+				hover = 30,
+
+				curveSegments = 80,
+
+				bevelThickness = 0.5,
+				bevelSize = 0.5,
+				bevelEnabled = true,
+
+				font = undefined,
+
+				fontName = "yoko",
+				fontWeight = "regular";
+
+
+
+			var targetRotation = 0;
+			var targetRotationOnMouseDown = 0;
+
+			var mouseX = 0;
+			var mouseXOnMouseDown = 0;
+
+			var windowHalfX = window.innerWidth / 2;
+
+			var fontIndex = 1;
+
+			init();
+			animate();
+
+			function decimalToHex( d ) {
+
+				var hex = Number( d ).toString( 16 );
+				hex = "272827".substr( 0, 6 - hex.length ) + hex;
+				return hex.toUpperCase();
+
+			}
+
+			function init() {
+
+				// canvas = document.querySelector('#c');
+ 				// renderer = new THREE.WebGLRenderer({canvas});
+
+				container = document.createElement( 'div' );
+				// container.setAttribute("class", "3d-logo")
+				document.body.appendChild( container );
+
+				permalink = document.getElementById( "permalink" );
+
+				// CAMERA
+
+				camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 1500 );
+				camera.position.set( 0, 400, 700 );
+
+				cameraTarget = new THREE.Vector3( 0, 150, 0 );
+
+				// SCENE
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xDFDFDA );
+				// scene.fog = new THREE.Fog( 0xDFDFDA, 250, 1400 );
+
+
+				group = new THREE.Group();
+				group.position.y = 100;
+
+				scene.add( group );
+
+				loadFont();
+
+
+				// RENDERER
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+
+								if (window.innerWidth<500){
+									size = size*0.7;
+									renderer.setSize( window.innerWidth, window.innerHeight );
+
+								}
+								else{
+									size=100;
+														renderer.setSize( window.innerWidth, window.innerHeight );
+								}
+				// renderer.setSize( window.innerWidth, window.innerHeight );
+
+				container.appendChild( renderer.domElement );
+// renderer.updateMatrix();
+				// STATS
+
+				stats = new Stats();
+				//container.appendChild( stats.dom );
+
+				// EVENTS
+
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				if (window.innerWidth<500){
+					size = size*0.7;
+					renderer.setSize( window.innerWidth, window.innerHeight );
+
+				}
+				else{
+					size=100;
+										renderer.setSize( window.innerWidth, window.innerHeight );
+				}
+			}
+
+			//
+
+			function boolToNum( b ) {
+
+				return b ? 1 : 0;
+
+			}
+
+
+			function loadFont() {
+
+				var loader = new THREE.FontLoader();
+				loader.load( 'fonts/' + fontName + '_' + fontWeight + '.typeface.json', function ( response ) {
+
+					font = response;
+
+					refreshText();
+
+				} );
+
+			}
+
+			function createText() {
+
+				textGeo = new THREE.TextGeometry( text, {
+
+					font: font,
+
+					size: size,
+					height: height,
+					curveSegments: curveSegments,
+
+					bevelThickness: bevelThickness,
+					bevelSize: bevelSize,
+					bevelEnabled: bevelEnabled
+
+				} );
+
+				textGeo.computeBoundingBox();
+				textGeo.computeVertexNormals();
+
+
+				if ( ! bevelEnabled ) {
+
+					var triangleAreaHeuristics = 0.1 * ( height * size );
+
+					for ( var i = 0; i < textGeo.faces.length; i ++ ) {
+
+						var face = textGeo.faces[ i ];
+
+						if ( face.materialIndex == 1 ) {
+
+							for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
+
+								face.vertexNormals[ j ].z = 0;
+								face.vertexNormals[ j ].normalize();
+
+							}
+
+							var va = textGeo.vertices[ face.a ];
+							var vb = textGeo.vertices[ face.b ];
+							var vc = textGeo.vertices[ face.c ];
+
+							var s = GeometryUtils.triangleArea( va, vb, vc );
+
+							if ( s > triangleAreaHeuristics ) {
+
+								for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
+
+									face.vertexNormals[ j ].copy( face.normal );
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+
+				var centerOffset = - 0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
+
+				textGeo = new THREE.BufferGeometry().fromGeometry( textGeo );
+				//
+				textMesh1 = new THREE.Mesh( textGeo, materials );
+
+				var geo = new THREE.EdgesGeometry( textMesh1.geometry ); // or WireframeGeometry
+				var mat = new THREE.LineBasicMaterial( { color: 0x272827, linewidth: 0.4} );
+				var wireframe = new THREE.LineSegments( geo, mat );
+
+				wireframe.position.x = centerOffset;
+					wireframe.position.y = hover;
+				wireframe.position.z = 0;
+
+				wireframe.rotation.x = 0;
+					wireframe.rotation.y = Math.PI * 2;
+				group.add( wireframe);
+
+			}
+//
+
+			function refreshText() {
+
+
+				group.remove( textMesh1 );
+
+				if ( ! text ) return;
+
+				createText();
+
+			}
+
+			function onDocumentMouseDown( event ) {
+
+				event.preventDefault();
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+				document.addEventListener( 'mouseout', onDocumentMouseOut, false );
+
+				mouseXOnMouseDown = event.clientX - windowHalfX;
+				targetRotationOnMouseDown = targetRotation;
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				mouseX = event.clientX - windowHalfX;
+
+				targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
+
+
+			}
+
+			function onDocumentMouseUp() {
+
+				document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+				document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+			}
+
+			function onDocumentMouseOut() {
+
+				document.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+				document.removeEventListener( 'mouseout', onDocumentMouseOut, false );
+
+			}
+
+			function onDocumentTouchStart( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+					targetRotationOnMouseDown = targetRotation;
+
+				}
+
+			}
+
+			function onDocumentTouchMove( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+				}
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+				stats.update();
+
+			}
+
+			function render() {
+
+				group.rotation.y += ( targetRotation - group.rotation.y ) * 0.05;
+				group.rotation.y += .3;
+
+
+
+				camera.lookAt( cameraTarget );
+
+				renderer.clear();
+				renderer.render( scene, camera );
+
+			}
+
+
+
+		</script>
+	</body>
+</html>
